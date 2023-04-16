@@ -1,0 +1,10 @@
+table {
+    border:bold;
+}
+body{
+    color: rgb(255, 165, 48);
+}
+.center{
+    margin-right: auto;
+    margin-left: auto;
+}
