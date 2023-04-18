@@ -1,23 +1,27 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: poppins;
+    text-transform: capitalize;
 }
-body{
+
+body {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
 }
-form{
+
+form {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.container{
+
+.container {
     width: 800px;
     height: 500px;
     border: #f3f2f2 solid 1px;
@@ -29,7 +33,8 @@ form{
     overflow: hidden;
     background-color: white;
 }
-#button{
+
+#button {
     position: absolute;
     display: block;
     background-image: linear-gradient(45deg, #00b7ff, #ddd);
@@ -44,12 +49,19 @@ form{
     margin: 10px;
     cursor: pointer;
 }
-h1{
+
+form a{
+    position: absolute;
+    bottom: 20px;
+}
+
+h1 {
     position: relative;
     font-weight: 500;
     font-size: 40px;
 }
-.left{
+
+.left {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -60,26 +72,31 @@ h1{
     border-right: #ddd solid 1px;
     position: relative;
 }
-h2{
+
+h2 {
     font-weight: 100;
     text-transform: capitalize;
 }
-.leftimg{
+
+.leftimg {
     position: absolute;
     left: 0;
     top: 0;
 }
-.rightimg{
+
+.rightimg {
     position: absolute;
     right: 0;
 }
-input{
+
+input {
     padding: 5px;
     border-radius: 50px;
     border: #00b7ff solid 1px;
     outline: none;
 }
-.right{
+
+.right {
     position: relative;
     display: flex;
     align-items: center;
@@ -88,14 +105,33 @@ input{
     width: 50%;
     background-image: linear-gradient(120deg, #FF695F, #00b7ff);
 }
-.right img{
+
+.right img {
     position: absolute;
 
 }
-@media screen and (max-width:700px) {
-    #form{
+
+@media screen and (max-width:450px) {
+    #form {
         width: 65%;
         padding: 40px;
-     }
     }
-    
+
+    .right,
+    .rightimg,
+    .leftimg {
+        display: none;
+    }
+
+    .left {
+        height: 100vh;
+        width: 100%;
+        border-right: none;
+    }
+
+    .container {
+        height: 100%;
+        width: 100%;
+        border-radius: 0px;
+    }
+}

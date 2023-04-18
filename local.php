@@ -30,80 +30,51 @@ $row = mysqli_fetch_assoc($result);
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="2071992.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="view.css">
-    <title>Cambio</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-            width: 100%;
-            border: 1px solid #ddd;
-        }
-
-        th,
-        td {
-            text-align: left;
-            padding: 8px;
-        }
-    </style>
+    <title>Cambio-Admin</title>
 </head>
 
 <body>
-    <center>
-        <table border="2" style="margin-top: auto;margin-bottom: auto;" class="center">
-            <tr>
-                <th></th>
-                <th>
-                    <h1>Electricity</h1>
-                </th>
-                <th>
-                    <h1>Status</h1>
-                </th>
-
-            </tr>
-            <tr>
-                <th>
-                    <h1>classe N°1</h1>
-                </th>
-                <td>
-                    <?php
-                    if ($row['status'] == 1) {
-                        echo '<h1 style="color:green;">Active </h1';
-                    } else {
-                        echo '<h1 style="color:red;">Inactive</h1>';
-                    }
-                    ?>
-                </td>
-                <td>
-                    <?php
-                    if ($row['alert'] == 1) {
-                        echo '<h1 style="color:red;">urgency</h1';
-                    } else {
-                        echo '<h1 style="color:green;">normal</h1>';
-                    }
-                    ?>
-                </td>
-
-            </tr>
-            <tr>
-                <th>
-                    <h1>classe N°2</h1>
-                </th>
-                <td></td>
-                <td></td>
-
-            </tr>
-            <tr>
-                <th>
-                    <h1>classe N°3</h1>
-                </th>
-                <td></td>
-                <td></td>
-
-            </tr>
-        </table>
-    </center>
+    <table>
+        <tr>
+            <th>ClasseID</th>
+            <th>Electricity</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>classe N°1</td>
+            <td>
+                <?php
+                if ($row['status'] == 1) {
+                    echo '<h1 style="color:green;">Active</h1>';
+                } else {
+                    echo '<h1> style="color:red;">Inactive</h1>';
+                }
+                ?>
+            </td>
+            <td>
+                <?php
+                if ($row['alert'] == 1) {
+                    echo '<h1 style="color:red;">urgency</h1>';
+                } else {
+                    echo '<h1> style="color:green;">normal</h1>';
+                }
+                ?>
+            </td>
+        </tr>
+        <tr>
+            <td>classe N°2</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>classe N°3</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
 </body>
 
 </html>
