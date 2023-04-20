@@ -1,47 +1,47 @@
 <?php
-// session_start();
+session_start();
 
-// include("connection.php");
-// include("functions.php");
+include("connection.php");
+include("functions.php");
 
-// $user_data = check_login($con);
+$user_data = check_login($con);
 
-// $servername = "localhost";
-// $dBUsername = "id20481770_triki";
-// $dBPassword = "z4@HZA/O2\uP/AfK";
-// $dBName = "id20481770_sample";
+$servername = "localhost";
+$dBUsername = "id20481770_triki";
+$dBPassword = "z4@HZA/O2\uP/AfK";
+$dBName = "id20481770_sample";
 
-// $conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
-
-
-
-// if (isset($_POST['toggle_LED'])) {
-	// $sql = "SELECT * FROM LED_STATUS;";
-	// $result = mysqli_query($conn, $sql);
-	// $row = mysqli_fetch_assoc($result);
-
-	// if ($row['status'] == 0) {
-		// $update = mysqli_query($conn, "UPDATE LED_STATUS SET status = 1 WHERE id = 1;");
-	// } else {
-		// $update = mysqli_query($conn, "UPDATE LED_STATUS SET status = 0 WHERE id = 1;");
-	// }
-// }
+$conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
 
 
-// if (isset($_POST['Alert'])) {
-	// $sql = "SELECT * FROM LED_STATUS;";
-	// $result = mysqli_query($conn, $sql);
-	// $row = mysqli_fetch_assoc($result);
 
-	// if ($row['alert'] == 0) {
-		// $update = mysqli_query($conn, "UPDATE LED_STATUS SET alert = 1 WHERE id = 1;");
-	// } else {
-		// $update = mysqli_query($conn, "UPDATE LED_STATUS SET alert = 0 WHERE id = 1;");
-	// }
-// }
-// $sql = "SELECT * FROM LED_STATUS;";
-// $result = mysqli_query($conn, $sql);
-// $row = mysqli_fetch_assoc($result);
+if (isset($_POST['toggle_LED'])) {
+	$sql = "SELECT * FROM LED_STATUS;";
+	$result = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_assoc($result);
+
+	if ($row['status'] == 0) {
+		$update = mysqli_query($conn, "UPDATE LED_STATUS SET status = 1 WHERE id = 1;");
+	} else {
+		$update = mysqli_query($conn, "UPDATE LED_STATUS SET status = 0 WHERE id = 1;");
+	}
+}
+
+
+if (isset($_POST['Alert'])) {
+	$sql = "SELECT * FROM LED_STATUS;";
+	$result = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_assoc($result);
+
+	if ($row['alert'] == 0) {
+		$update = mysqli_query($conn, "UPDATE LED_STATUS SET alert = 1 WHERE id = 1;");
+	} else {
+		$update = mysqli_query($conn, "UPDATE LED_STATUS SET alert = 0 WHERE id = 1;");
+	}
+}
+$sql = "SELECT * FROM LED_STATUS;";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 
 ?>
 
@@ -111,7 +111,7 @@
 			<h1 style="font-family:serf;text-align:center;">The status of the LED is:</h1>
 
 			<?php 
-			// echo '<h1 style="text-align: center; color:red;">  ' . $row['status'] . '</h1>'; 
+			echo '<h1 style="text-align: center; color:red;">  ' . $row['status'] . '</h1>'; 
 			?>
 
 			<div class="col_3">
@@ -132,17 +132,17 @@
 				<br>
 				<br>
 				<?php
-				// if ($row['status'] == 0) { ?>
-					<!-- <div class="led_img"> -->
-						<!-- <img id="contest_img" src="img/led_off.png" width="100%" height="100%"> -->
-					<!-- </div> -->
+				if ($row['status'] == 0) { ?>
+					<div class="led_img">
+						<img id="contest_img" src="img/led_off.png" width="100%" height="100%">
+					</div>
 					<?php
-				// } else { ?>
-					<!-- <div class="led_img"> -->
-						<!-- <img id="contest_img" src="img/led_on.png" width="100%" height="100%"> -->
-					<!-- </div> -->
+				} else { ?>
+					<div class="led_img">
+						<img id="contest_img" src="img/led_on.png" width="100%" height="100%">
+					</div>
 					<?php
-				// }
+				}
 				?>
 
 

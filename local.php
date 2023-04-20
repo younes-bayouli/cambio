@@ -1,23 +1,23 @@
 <?php
-// session_start();
+session_start();
 
-// include("connection.php");
-// include("functions.php");
-
-
-// $user_data = check_login($con);
-
-// $servername = "localhost";
-// $dBUsername = "id20481770_triki";
-// $dBPassword = "z4@HZA/O2\uP/AfK";
-// $dBName = "id20481770_sample";
-
-// $conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
+include("connection.php");
+include("functions.php");
 
 
-// $sql = "SELECT * FROM LED_STATUS;";
-// $result = mysqli_query($conn, $sql);
-// $row = mysqli_fetch_assoc($result);
+$user_data = check_login($con);
+
+$servername = "localhost";
+$dBUsername = "id20481770_triki";
+$dBPassword = "z4@HZA/O2\uP/AfK";
+$dBName = "id20481770_sample";
+
+$conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
+
+
+$sql = "SELECT * FROM LED_STATUS;";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 
 
 
@@ -47,20 +47,20 @@
             <td>classe N°1</td>
             <td>
                 <?php
-                // if ($row['status'] == 1) {
-                    // echo '<h1 style="color:green;">Active</h1>';
-                // } else {
-                    // echo '<h1> style="color:red;">Inactive</h1>';
-                // }
+                if ($row['status'] == 1) {
+                    echo '<h1 style="color:green;">Active</h1>';
+                } else {
+                    echo '<h1> style="color:red;">Inactive</h1>';
+                }
                 ?>
             </td>
             <td>
                 <?php
-                // if ($row['alert'] == 1) {
-                    // echo '<h1 style="color:red;">urgency</h1>';
-                // } else {
-                    // echo '<h1> style="color:green;">normal</h1>';
-                // }
+                if ($row['alert'] == 1) {
+                    echo '<h1 style="color:red;">urgency</h1>';
+                } else {
+                    echo '<h1> style="color:green;">normal</h1>';
+                }
                 ?>
             </td>
         </tr>

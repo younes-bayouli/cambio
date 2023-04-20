@@ -1,41 +1,41 @@
 <?php
 
-// session_start();
+session_start();
 
-// include("connection.php");
-// include("functions.php");
-
-
-// if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
-// $user_name = $_POST['user_name'];
-// $password = $_POST['password'];
-
-// if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
+include("connection.php");
+include("functions.php");
 
 
-// $query = "select * from users where user_name = '$user_name' limit 1";
-// $result = mysqli_query($con, $query);
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-// if ($result) {
-// if ($result && mysqli_num_rows($result) > 0) {
+$user_name = $_POST['user_name'];
+$password = $_POST['password'];
 
-// $user_data = mysqli_fetch_assoc($result);
+if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
 
-// if ($user_data['password'] === $password) {
 
-// $_SESSION['user_id'] = $user_data['user_id'];
-// header("Location: index.php");
-// die;
-// }
-// }
-// }
+$query = "select * from users where user_name = '$user_name' limit 1";
+$result = mysqli_query($con, $query);
 
-// echo "wrong username or password!";
-// } else {
-// echo "wrong username or password!";
-// }
-// }
+if ($result) {
+if ($result && mysqli_num_rows($result) > 0) {
+
+$user_data = mysqli_fetch_assoc($result);
+
+if ($user_data['password'] === $password) {
+
+$_SESSION['user_id'] = $user_data['user_id'];
+header("Location: index.php");
+die;
+}
+}
+}
+
+echo "wrong username or password!";
+} else {
+echo "wrong username or password!";
+}
+}
 
 ?>
 
@@ -76,7 +76,6 @@
 	<div class="leftimg"><img src="img/tables-left-dec.png" alt=""></div>
 	<div class="rightimg"><img src="img/contact-dec.png" alt=""></div>
 	<script>
-		// Basic client-side validation to ensure that both fields are filled in
 		const form = document.querySelector('form');
 		const usernameInput = document.querySelector('#username');
 		const passwordInput = document.querySelector('#password');
