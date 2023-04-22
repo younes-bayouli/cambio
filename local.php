@@ -1,27 +1,50 @@
 <?php
 session_start();
 
-include("connection.php");
-include("functions.php");
-
-
-$user_data = check_login($con);
 
 $servername = "localhost";
-$dBUsername = "id20481770_triki";
-$dBPassword = "z4@HZA/O2\uP/AfK";
-$dBName = "id20481770_sample";
+$dBUsername = "root";
+$dBPassword = "";
+$dBName = "cambio";
 
 $conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
+$sql = "SELECT * FROM classes;";
+$cresult = mysqli_query($conn, $sql);
 
-$sql = "SELECT * FROM LED_STATUS;";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
+echo "<table>";
+echo "<tr><th>name</th><th>status</th><th>teacher</th><th>id</th></tr>";
+while ($crow= mysqli_fetch_assoc($cresult)) {
+    if($crow["teacher"]){
+        $tid= $crow["teacher"];
+        $tresult = mysqli_query($conn, "SELECT * FROM users WHERE id = $tid");
+        $tinfo=mysqli_fetch_assoc($tresult);
+        $tname=$tinfo["name"];
+    }else{
+        $tname="";
+    }
+    if($crow["status"]){
+        echo "<tr><td>" . $crow["name"] . "</td><td style='background-color:green;'>ON</td><td>" . $tname . "</td><td>" . $crow["id"] . "</td></tr>";
+    }else{
+        echo "<tr><td>" . $crow["name"] . "</td><td style='background-color:red;'>OFF</td><td>" . $tname . "</td><td>" . $crow["id"] . "</td></tr>";
+    }
+    
+}
+echo "</table>";
 
+echo "<table>";
+echo "<tr><th>name</th><th>phone</th></tr>";
+$tresult=mysqli_query($conn, "select * from users");
+while ($trow= mysqli_fetch_assoc($tresult)) {
+    echo "<tr><td>" . $trow["name"] . "</td><td>" . $trow["mobile"] . "</td></tr>";
+}
 
+echo "</table>";
 
-
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -37,44 +60,6 @@ $row = mysqli_fetch_assoc($result);
 </head>
 
 <body>
-    <table>
-        <tr>
-            <th>ClasseID</th>
-            <th>Electricity</th>
-            <th>Status</th>
-        </tr>
-        <tr>
-            <td>classe N°1</td>
-            <td>
-                <?php
-                if ($row['status'] == 1) {
-                    echo '<h1 style="color:green;">Active</h1>';
-                } else {
-                    echo '<h1> style="color:red;">Inactive</h1>';
-                }
-                ?>
-            </td>
-            <td>
-                <?php
-                if ($row['alert'] == 1) {
-                    echo '<h1 style="color:red;">urgency</h1>';
-                } else {
-                    echo '<h1> style="color:green;">normal</h1>';
-                }
-                ?>
-            </td>
-        </tr>
-        <tr>
-            <td>classe N°2</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>classe N°3</td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
 </body>
 
 </html>

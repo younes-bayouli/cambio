@@ -21,23 +21,18 @@
     </div>
     <script>
         function scan() {
-            // Initialize the scanner with the video element
+            document.getElementById('class').value = "154853"
             let scanner = new Instascan.Scanner({
                 video: document.getElementById('preview')
             });
 
-            // Add a listener for when a QR code is scanned
             scanner.addListener('scan', function(content) {
-                alert('Scanned content: ' + content);
-                scanner.stop(); // Stop the scanner once a QR code has been found
+                scanner.stop();
             });
 
-            // Start the scanner
             Instascan.Camera.getCameras().then(function(cameras) {
                 if (cameras.length > 0) {
                     scanner.start(cameras[2]);
-                    alert("Hello, World!");
-
                 } else {
                     alert("no camera");
                     console.error('No cameras found.');
