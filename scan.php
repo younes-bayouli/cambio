@@ -15,13 +15,13 @@
         <button onclick="scan()">Scan QR Code</button>
         <form action="index.php" method="post">
             <input type="text" name="class" id="class" readonly placeholder="Scaning...">
-            <!-- <?php echo '<input type="text" name="teacher" id="teacher" value=' . $_POST['user_name'] . '>' ?> -->
+            <input type="text" name="test" value="0" style="display: none;">
             <button type="submit">submit</button>
         </form>
     </div>
     <script>
         function scan() {
-            document.getElementById('class').value = "154853"
+            document.getElementById('class').value = "7"
             let scanner = new Instascan.Scanner({
                 video: document.getElementById('preview')
             });

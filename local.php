@@ -60,6 +60,22 @@ mysqli_close($conn);
 </head>
 
 <body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        setInterval(function() {
+            $.ajax({
+                url: 'index.php', // replace with the URL of your PHP script to check for changes in the database
+                success: function(data) {
+                    if (data == '1') {
+                        location.reload(); // reload the page if changes are detected
+                    }
+                }
+            });
+        }, 5000); // repeat the check every 5 seconds
+    });
+</script>
+
 </body>
 
 </html>

@@ -1,41 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
     <link rel="shortcut icon" href="./images/2071992.png" type="image/x-icon">
     <title>Cambio</title>
 </head>
+
 <body>
-    
+
     <!-- nav bar -->
     <div class="bar">
-        <div class="logo"><img src="2071992.png" alt="cambio"></div>
+        <div class="logo"><img src="./images/2071992.png" alt="cambio"></div>
         <div class="items">
-            <div class="item home"><a href="#home">home</a></div>
-            <div class="item service"><a href="#service">service</a></div>
+            <div class="item home"><a href="#home" class="active">home</a></div>
             <div class="item how"><a href="#how">tutorial</a></div>
-            <div class="item about"><a href="#about">about</a></div>
             <div class="item contact"><a href="#contact">contact</a></div>
-            <div class="item log"><a href="login.php">log in</a></div>
+            <div class="item log"><a href="#">log in</a></div>
+        </div>
+        <div class="humberger">
+            <div class="hbar"></div>
         </div>
     </div>
+    <ul>
+        <div class="item home"><a href="#home" class="active">home</a></div>
+        <div class="item how"><a href="#how">tutorial</a></div>
+        <div class="item contact"><a href="#contact">contact</a></div>
+    </ul>
     <!-- end nav bar -->
 
     <!-- home section -->
-    <div class="container" id="home">
-        <div class="right-image"><img src="banner-right-image.png" alt=""></div>
-        <div class="left-image"><img src="baner-dec-left.png" alt=""></div>
+    <section class="container" id="home">
+        
+        <div class="right-image"><img src="./images/banner-right-image.png" alt=""></div>
+        <div class="left-image"><img src="./images/baner-dec-left.png" alt=""></div>
         <div id="mycarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-target="#mycarousel" data-slide-to="0" celass="active"></li>
+                <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#mycarousel" data-slide-to="1"></li>
             </ol>
             <div class="carousel-inner">
@@ -47,31 +56,66 @@
 
                 <div class="item header">
                     <h1>welcome to <span>Cambio</span></h1>
-                    <h2>by this app you can <span>reduce</span> the amount of the <i>electricity bill</i> in your company.</h2>
+                    <h2>by this app you can <span>reduce</span> the amount of the <i>electricity bill</i> in your
+                        company.</h2>
                 </div>
             </div>
         </div>
-        <div class="button"><a href="index.html">get started</a></div>
-        
-    </div>
+        <div class="button"><a href="#service">get started</a></div>
+
+    </section>
     <!-- end home section -->
     <!-- how to section -->
-    <div class="container" id="how">
-        <div class="right-image"><img src="videos-right-dec.png" alt=""></div>
-        <div class="left-image"><img src="videos-left-dec.png" alt=""></div>
-        
-    </div>
+    <section class="container" id="how">
+        <div class="right-image"><img src="./images/videos-right-dec.png" alt=""></div>
+        <div class="left-image"><img src="./images/videos-left-dec.png" alt=""></div>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <h1>step 1:</h1>
+                    <p>add the informations about teachers in the table below.</p>
+                    <a href="#">teachers &rarr;</a>
+                </div>
+                <div class="item">
+                    <h1>step 2:</h1>
+                    <p>put the informations of classes and create a Qr code for evry one.</p>
+                    <a href="#">Qr code &rarr;</a>
+                </div>
+                <div class="item">
+                    <h1>step 3:</h1>
+                    <p>download our app from the link below.</p>
+                    <a href="#">our app &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
     <!-- end how to section -->
-    <div class="container" id="service">
-
-    </div>
-    <div class="container" id="about">
-
-    </div>
-    <div class="container" id="contact">
-
-    </div>
-     <!-- footer -->
+    <!-- contact section -->
+    <section class="container" id="contact">
+            <div class="contact_items">
+                <a target="_blank" href="mailto:bayouliyounes@gmail.com" class="contact_item">
+                    <div class="icon">
+                        <img src="./images/Emails.png" alt="call">
+                    </div>
+                    <div class="contact-info">
+                        <h1>Email</h1>
+                        <h2>bayouliyounes</h2>
+                    </div>
+                </a>
+                <a target="_blank" href="https://www.google.com/maps/@33.1778029,10.4398339,11z" class="contact_item">
+                    <div class="icon">
+                        <img src="./images/Address.png" alt="call">
+                    </div>
+                    <div class="contact-info">
+                        <h1>Address</h1>
+                        <h2>my address</h2>
+                    </div>
+                </a>
+            </div>
+    </section>
+    <!-- end contact section -->
+    <!-- footer -->
     <footer>
         <div class="footer">
             <div class="brand">
@@ -79,10 +123,13 @@
             </div>
             <div class="sotial-item">
                 <div class="sotial-icon">
-                    <a target="_blank" href="https://www.facebook.com/younesbayouli6588/"><img src="./images/facebook.png" alt=""></a>
+                    <a target="_blank" href="https://www.facebook.com/younesbayouli6588"><img
+                            src="./images/facebook.png" alt="Cambio"></a>
                 </div>
                 <div class="sotial-icon">
-                    <a target="_blank" href="https://www.instagram.com/direct/t/340282366841710300949128163212229370207"><img src="./images/instagram.png" alt=""></a>
+                    <a target="_blank"
+                        href="https://www.instagram.com/direct/t/340282366841710300949128163212229370207"><img
+                            src="./images/instagram.png" alt="Cambio"></a>
                 </div>
                 <div class="sotial-icon">
                     <a href="#" target="_blank"><img src="./images/twitter.png" alt="twitter"></a>
@@ -94,4 +141,5 @@
     <!-- end footer -->
 </body>
 <script src="./script.js"></script>
+
 </html>

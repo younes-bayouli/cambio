@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    position: relative;
     text-decoration: none;
 }
 
@@ -26,9 +25,8 @@ a{
     height: auto;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #ddd;
-    box-shadow: 0 0 10px #ddd;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.527);
+    box-shadow: 0 0 10px rgba(141, 137, 137, 0.849);
     transition: all .5s;
     z-index: 9999999999999999999;
 }
@@ -57,14 +55,20 @@ a{
     color: #FF695F;
     text-decoration: none;
 }
+.item a.active{
+    color: #ff695f;
+}
 
 .log{
     background-color: #00b7ff;
     border-radius: 100px;
-    transition: all 0.1s;
+    transition: all 0.3s;
 }
 .log:hover{
     background-color: #FF695F;
+}
+.bar .items .log:hover a{
+    color: white;
 }
 .log a{
     display: block;
@@ -88,48 +92,189 @@ a{
     transform: translate3d(0,0px,0);
 }
 
+
+
+
+
+ul {
+    list-style: none;
+    position: fixed;
+    z-index: 999999999999999999999999999999999999999999999999999999999;
+    background-color: rgb(31, 30, 30);
+    width: 100%;
+    height: 100vh;
+    left: 100%;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    overflow-x: hidden;
+    flex-direction: column;
+    transition: 0.3s ease left;
+}
+
+ul a {
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+    color: white;
+    text-transform: uppercase;
+    padding: 20px;
+    display: block;
+}
+
+ul a::after {
+    content: attr(data-after);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: rgba(240, 248, 255, 0.021);
+    font-size: 13rem;
+    letter-spacing: 50px;
+    z-index: -1;
+    transition: 10s ease letter-spacing;
+}
+
+ul a:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    letter-spacing: initial;
+}
+
+.humberger {
+    display: none;
+    height: 40px;
+    width: 40px;
+    right: 0;
+    border: 3px solid #00b7ff;
+    border-radius: 50%;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    cursor: pointer;
+    margin: 50px;
+}
+
+.humberger .hbar {
+    height: 2px;
+    width: 20px;
+    background-color: #00b7ff;
+    transition: 0.3s ease;
+}
+
+.humberger .hbar::after,
+.humberger .hbar::before {
+    content: '';
+    height: 2px;
+    width: 20px;
+    position: absolute;
+    transition: 0.3s ease;
+    transition-property: top, bottom;
+}
+
+.humberger .hbar::after {
+    background-color: #00b7ff;
+    top: 8px;
+    transition: 0.3s ease;
+}
+
+.humberger .hbar::before {
+    background-color: #ff695f;
+    bottom: 8px;
+    transition: 0.3s ease;
+}
+
+.humberger.active .hbar {
+    background-color: transparent;
+    transition: 0.3s ease;
+}
+
+#home .carousel-indicators.inactive{
+    display: none;
+}
+
+.humberger.active .hbar::before {
+    bottom: initial;
+    transform: rotateZ(-45deg);
+}
+
+.humberger.active .hbar::after {
+    top: initial;
+    transform: rotateZ(45deg);
+}
+
+ul.active {
+    left: 0;
+}
+
+
+.humberger:hover .ring {
+    border: 2px solid #00b7ff;
+    border-radius: 50%;
+    position: absolute;
+    animation: 0.3s rings infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.humberger:hover .ring::after {
+    content: '';
+    border: 2px solid #ff695f;
+    border-radius: 50%;
+    position: absolute;
+    animation-delay: 0.5;
+    animation: 0.3s rings infinite;
+}
+
 .container{
     min-height: 100vh;
     width: 100vw;
-    margin-top: 100px;
+    position: relative;
+}
+
+
+#home{
+    display: flex;
+    align-items: center;
 }
 
 #home .right-image{
     position: absolute;
-    height: 650px;
-    width: 850px;
+    height: 100vh;
+    width: 60vw;
     top: 0;
     right: 0;
 }
 
 #home .left-image{
     position: absolute;
-    height: 500px;
+    height: 550px;
     width: 250px;
     top: 0;
     left: 0;
 }
 
-.carousel{
-    width: 800px;
-    top: 150px;
-    left: 100px;
-    height: 500px;
+#home .carousel{
+    margin: 70px;
+    width: 400px;
+    height: 50vh;
+    position: relative;
 }
 
 #home .header{
     width: 500px;
-    font-size: 30px;
     font-family: poppins;
-    font-weight: 900;
     height: 500px;
     gap: 20px;
 }
-.carousel-indicators{
+#home .carousel-indicators{
     position: absolute;
     left: 50px;
 }
-.carousel-indicators li {
+#home .carousel-indicators li {
     margin: 0;
     border-radius: 0;
     height: 3px;
@@ -137,23 +282,22 @@ a{
     background-color: #dddddd;
 }
 
-.carousel-indicators li::before{
+#home .carousel-indicators li::before{
     content: "1";
     position: absolute;
 }
 
-.carousel-indicators .active::before{
+#home .carousel-indicators .active::before{
     content: "1";
     position: absolute;
 }
 .button{
     position: absolute;
-    bottom: 20px;
-    left: 300px;
+    bottom: 50px;
+    right: 50px;
     background-color: #00b7ff;
     border-radius: 100px;
-    transition: all 0.1s;
-    bottom: 100px;
+    transition: all 0.3s;
 }
 .button:hover{
     background-color: #FF695F;
@@ -167,7 +311,7 @@ a{
 .button a:hover{
     text-decoration: none;
 }
-.carousel-indicators .active{
+#home .carousel-indicators .active{
     margin: 0;
     border-radius: 0;
     height: 3px;
@@ -175,16 +319,16 @@ a{
     background-color: #635d5d;
 }
 #home .header h1{
-    font-size: 30px;
+    font-size: 3rem;
     font-weight: 700;
 }
 
 #home .header p{
     line-height: 50px;
     font-weight: 200;
-    font-size: 20px;
+    font-size: 2rem;
 }
-.carousel-inner{
+#home .carousel-inner{
     width: 600px;
 }
 
@@ -195,7 +339,7 @@ a{
     color: #FF695F;
 }
 #home .header h2 {
-    font-size: 50px;
+    font-size: 3rem;
 }
 #home .header h2 h2{
     color: #00b7ff;
@@ -206,6 +350,13 @@ i{
 }
 
 
+
+#how{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 #how .right-image{
     position: absolute;
@@ -220,6 +371,98 @@ i{
     height: 471px;
     width: 220px;
 }
+
+#how .item{
+    padding: 20px;
+    border-radius: 30px;
+    height: 300px;
+    width: 500px;
+}
+
+#how *{
+    text-transform: capitalize;
+    font-family: poppins;
+}
+
+#how h1{
+    color: #ff695f;
+    font-weight: 700;
+}
+
+#how p{
+    font-size: 2rem;
+    color: darkgrey;
+}
+
+#how a{
+    padding: 10px 30px;
+    font-size: 1.5rem;
+    background-color: #00b7ff;
+    border-radius: 20px;
+    color: white;
+    font-weight: 600;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+    display: block;
+    z-index: 52462551;
+}
+
+
+
+
+#contact{
+    display: flex;
+    flex-direction: row;
+}
+
+.contact_items {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact_item {
+    width: 80%;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px #0000002c;
+    flex-direction: column;
+    transition: 0.3s ease box-shadow;
+    color: purple;
+}
+
+.contact_item:hover {
+    box-shadow: 0 0 10px #0000002c;
+}
+
+#contact .icon {
+    width: 70px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.contact-info h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.contact-info h2 {
+    font-size: 1.3rem;
+    line-height: 2rem;
+    font-weight: 500;
+}
+
+
 
 
 
@@ -243,7 +486,7 @@ footer {
 }
 
 .brand h1 span{
-    color: red;
+    color: #ff695f;
 }
 
 .brand {
@@ -274,7 +517,7 @@ footer {
 
 .sotial-item img {
     filter: grayscale(1);
-    transition: 0.3s ease filter;
+    transition: 10s ease filter;
 }
 
 .sotial-icon:hover img {
@@ -284,10 +527,33 @@ footer {
 .footer p {
     color: white;
 }
-@media screen and (max-width:700px) {
-    body{
-        width: 65%;
-        padding: 40px;
+
+@media only screen and (max-width:1000px){
+    .items{
+        display: none;
     }
-    
+    .bar{
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+    }
+    #home{
+        margin: 0;
+        background-image: url("./images/banner-right-image.png");
+        background-size: 200vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #home .right-image, #home .left-image{
+        display: none;
+    }
+    .button{
+        right: 0;
+        bottom: 0;
+        margin: 20px;
+    }
+    .humberger{
+        display: flex;
+    }
 }

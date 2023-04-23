@@ -8,14 +8,25 @@ $dBPassword = "";
 $dBName = "cambio";
 
 $conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$cid = $_POST['class'];
+	$_SESSION['class']=$cid;
+} else {
+	$cid = $_SESSION['class'];
+}
 
 
-$cid= $_POST['class'];
+$result = mysqli_query($conn, "SELECT * FROM classes WHERE id = $cid;");
+$class = mysqli_fetch_assoc($result);
 
-$result= mysqli_query($conn, "SELECT * FROM classes WHERE id = $cid;");
-$class= mysqli_fetch_assoc($result);
-echo "<h1>". $class["name"]."</h1>";
-// echo $cid;
+
+$teacherid=$_SESSION['user_id'];
+$teacherresult=mysqli_query($conn, "SELECT * FROM users WHERE id = $teacherid;");
+$teacher=mysqli_fetch_assoc($teacherresult);
+if(mysqli_query($conn, "UPDATE classes SET teacher=$teacherid WHERE id=$cid;"))
+echo '<h1>good morning '.$teacher['name'].'</h1>';
+echo "<h2>" . $class["name"] . "</h2>";
+
 
 ?>
 
@@ -77,7 +88,22 @@ echo "<h1>". $class["name"]."</h1>";
 </head>
 
 <body>
+
+	<?php
+	if ($class['status']) {
+		echo '<form action="led.php" method="post"><input type="text" name="class" value=' . $cid . ' style="display:none;">';
+		echo '<input type="text" name="test" value="1" style="display: none;">';
+		echo '<button type="submit">turn off</button></form>';
+		echo '<div id="ledimg"><img src="img/led_on.png" alt=""></div>';
+	} else {
+		echo '<form action="led.php" method="post"><input type="text" name="class" value=' . $cid . ' style="display:none;">';
+		echo '<input type="text" name="test" value="1" style="display: none;">';
+		echo '<button type="submit">turn on</button></form>';
+		echo '<div id="ledimg"><img src="img/led_off.png" alt=""></div>';
+	}
+	?>
 	
+
 </body>
 
 </html>
